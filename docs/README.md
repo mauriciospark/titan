@@ -65,30 +65,6 @@ Com foco em operações locais, o TITAN elimina a necessidade de papelada físic
 - Navegador moderno (Chrome, Firefox, Edge, Safari)
 - Nenhuma instalação de dependências necessária
 
-### Passo a Passo
-
-1. **Clone o repositório**
-   ```bash
-   git clone https://github.com/mauriciospark/titan.git
-   cd titan
-   ```
-
-2. **Abra o projeto**
-   - Basta abrir o arquivo `index.html` em qualquer navegador moderno
-   - Ou use um servidor local para desenvolvimento:
-     ```bash
-     # Usando Python
-     python -m http.server 8000
-     
-     # Usando Node.js (http-server)
-     npx http-server
-     ```
-
-3. **Inicie o uso**
-   - O sistema está pronto para uso imediato
-   - Todos os dados são salvos automaticamente no navegador
-   - Configure os preços na seção "Configurações do Barco"
-
 ### Desenvolvimento
 
 Para desenvolvimento local com hot-reload:
