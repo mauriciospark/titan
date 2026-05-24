@@ -1,0 +1,621 @@
+/*
+  ============================================================================
+  PROPRIETÁRIO: Mauricio Spark
+  MARCA:        Spark Mauricio
+  PROJETO:      TITAN
+  VERSÃO:       v1.0.0
+  LINHAGEM:     SPARK
+  ============================================================================
+  Documento de Planejamento de Escopo
+  COPYRIGHT: © 2026 / Mauricio Spark. Todos os direitos reservados.
+  ============================================================================
+*/
+
+/* ==================== VARIÁVEIS CSS ==================== */
+:root {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --accent-color: #00f2fe;
+    --text-color: #f8fafc;
+    --text-muted: #94a3b8;
+    --border-radius: 8px;
+    --danger-color: #e74c3c;
+}
+
+/* ==================== ESTILOS GERAIS ==================== */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+/* ==================== HEADER ==================== */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--card-bg);
+    padding-bottom: 10px;
+}
+
+header h1 { color: var(--accent-color); margin: 0; font-size: 2rem; }
+
+/* ==================== CONTAINER PRINCIPAL ==================== */
+.container { max-width: 1400px; margin: 0 auto; }
+
+/* ==================== CAMPO ÚNICO INTELIGENTE ==================== */
+.search-box-section {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+    border-left: 5px solid var(--accent-color);
+}
+
+.search-box-section label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.search-box-section input {
+    width: calc(80% - 50px);
+    padding: 12px;
+    background: #0f172a;
+    border: 1px solid #334155;
+    color: white;
+    border-radius: 4px 0 0 4px;
+    font-size: 1rem;
+    margin-right: 0;
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.btn-toggle-form {
+    width: 50px;
+    height: 48px;
+    background: var(--accent-color);
+    color: #0f172a;
+    font-size: 1.2rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 0 4px 4px 0;
+    transition: background 0.3s ease;
+}
+
+.btn-toggle-form:hover {
+    background: #00c4cf;
+}
+
+.search-box-section small {
+    display: block;
+    margin-top: 8px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.search-box-section button {
+    width: 18%;
+    padding: 12px;
+    background: var(--accent-color);
+    color: #0f172a;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.search-box-section button:hover {
+    background: #00c4cf;
+}
+
+/* ==================== FORMULÁRIO ESTRUTURADO ==================== */
+.structured-form {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+    border: 2px solid var(--accent-color);
+    animation: slideDown 0.3s ease;
+}
+
+.form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #334155;
+}
+
+.form-header h3 {
+    margin: 0;
+    color: var(--accent-color);
+    font-size: 1.2rem;
+}
+
+.btn-close-form {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.btn-close-form:hover {
+    background: rgba(231, 76, 60, 0.2);
+    color: #e74c3c;
+}
+
+.form-section {
+    margin-bottom: 20px;
+}
+
+.form-section h4 {
+    margin: 0 0 15px 0;
+    color: var(--accent-color);
+    font-size: 1rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.form-row .form-group {
+    flex: 1;
+    min-width: 200px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.checkbox-label:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.cargo-fields {
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(0, 242, 254, 0.05);
+    border-radius: 4px;
+    border-left: 3px solid var(--accent-color);
+}
+
+/* Estilos para abas do formulário */
+.form-tabs {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #334155;
+}
+
+.tab-button {
+    flex: 1;
+    padding: 12px 20px;
+    background: transparent;
+    color: var(--text-muted);
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-radius: 4px 4px 0 0;
+}
+
+.tab-button:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-color);
+}
+
+.tab-button.active {
+    color: var(--accent-color);
+    border-bottom-color: var(--accent-color);
+    background: rgba(0, 242, 254, 0.05);
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #334155;
+}
+
+.btn-primary {
+    background: var(--accent-color);
+    color: #0f172a;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    padding: 12px 24px;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: #00c4cf;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-muted);
+    font-weight: bold;
+    border: 1px solid #334155;
+    cursor: pointer;
+    padding: 12px 24px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+}
+
+/* Estilos para inputs do formulário estruturado */
+.structured-form input,
+.structured-form select {
+    width: 100%;
+    padding: 10px;
+    background: #0f172a;
+    border: 1px solid #334155;
+    color: white;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.structured-form input:focus,
+.structured-form select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.structured-form select {
+    cursor: pointer;
+}
+
+.structured-form select option {
+    background: #0f172a;
+    color: white;
+}
+.feedback-panel {
+    background: var(--card-bg);
+    padding: 15px 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+    border-left: 5px solid #10b981;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.feedback-panel h3 {
+    margin: 0 0 10px 0;
+    font-size: 1rem;
+    color: var(--accent-color);
+}
+
+.feedback-content {
+    display: flex;
+    gap: 20px;
+}
+
+.feedback-passenger,
+.feedback-cargo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+}
+
+.feedback-icon {
+    font-size: 1.2rem;
+}
+
+/* ==================== LAYOUT EM DUAS COLUNAS ==================== */
+.two-column-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.column-left,
+.column-right {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+@media (max-width: 1024px) {
+    .two-column-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==================== PAINÉIS DE MÉTRICAS ==================== */
+.metrics-card {
+    background: linear-gradient(135deg, var(--card-bg) 0%, #1e3a5f 100%);
+    border: 1px solid var(--accent-color);
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.metric-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+}
+
+.metric-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.metric-value {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    border: 1px solid #334155;
+}
+
+.card h2 {
+    font-size: 1.2rem;
+    color: var(--accent-color);
+    margin-top: 0;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 10px;
+}
+
+/* ==================== TABELAS DE DADOS ==================== */
+.table-container {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.data-table thead {
+    position: sticky;
+    top: 0;
+    background: var(--card-bg);
+    z-index: 10;
+}
+
+.data-table th {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.data-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #334155;
+}
+
+.data-table tbody tr:hover {
+    background: rgba(0, 242, 254, 0.1);
+}
+
+.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ==================== ÁREA CENTRALIZADA DE PRÉ-VISUALIZAÇÃO DO BILHETE ==================== */
+.ticket-preview-section {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ticket-preview {
+    background: #fff;
+    color: #000;
+    padding: 20px;
+    border-radius: 4px;
+    font-family: monospace;
+    white-space: pre-wrap;
+    max-width: 600px;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.ticket-preview:empty {
+    display: none;
+}
+
+/* ==================== FORMULÁRIOS E BOTÕES ==================== */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    background: #0f172a;
+    border: 1px solid #334155;
+    color: white;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.actions button {
+    flex: 1;
+    padding: 10px;
+    background: var(--accent-color);
+    color: #0f172a;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.actions button:hover {
+    background: #00c4cf;
+}
+
+.btn-danger {
+    background: var(--danger-color);
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    padding: 12px 20px;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.btn-danger:hover {
+    background: #c0392b;
+}
+
+.btn-small {
+    padding: 5px 10px;
+    font-size: 0.8rem;
+}
+
+/* ==================== SEÇÕES SECUNDÁRIAS COLAPSÁVEIS ==================== */
+.secondary-sections {
+    margin-top: 20px;
+}
+
+.collapsible-section {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    margin-bottom: 15px;
+    border: 1px solid #334155;
+}
+
+.collapsible-section summary {
+    padding: 15px 20px;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--accent-color);
+    user-select: none;
+    transition: background 0.3s ease;
+}
+
+.collapsible-section summary:hover {
+    background: rgba(0, 242, 254, 0.1);
+}
+
+.collapsible-section summary::-webkit-details-marker {
+    display: none;
+}
+
+.collapsible-section[open] summary {
+    border-bottom: 1px solid #334155;
+}
+
+.collapsible-section .card {
+    border: none;
+    border-radius: 0;
+    margin: 0;
+}
+.text-muted {
+    color: var(--text-muted);
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+/* ⚓ Regras exclusivas para quando o comando de impressão for disparado */
+@media print {
+    /* 1. Esconde absolutamente tudo o que está na tela do TITAN */
+    body * {
+        visibility: hidden;
+    }
+
+    /* 2. Exibe apenas o preview do bilhete */
+    #preview-passagem, #preview-passagem * {
+        visibility: visible;
+    }
+
+    /* 3. Força o bilhete a ficar no topo esquerdo da folha de impressão */
+    #preview-passagem {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        color: #000; /* Garante texto preto na impressão */
+        background: #fff; /* Garante fundo branco na impressão */
+    }
+}

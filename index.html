@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  PROPRIETÁRIO: Mauricio Spark
+  MARCA: SparkMauricio
+  PROJETO: TITAN
+  VERSÃO: v1.0.0
+  LINHAGEM: SPARK
+  ============================================================================
+  Documento de Planejamento de Escopo
+  COPYRIGHT: © 2026 / Mauricio Spark. Todos os direitos reservados.
+  ============================================================================
+-->
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TITAN</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+    <!-- Header Principal -->
+    <header role="banner">
+        <img src="logo.jpg" alt="Logo TITAN" width="100" height="100">
+        <h1>TITAN</h1>
+    </header>
+
+    <main class="container">
+        
+        <!-- FORMULÁRIO INTELIGENTE (Campo Único) -->
+        <section class="search-box-section" aria-labelledby="input-title">
+            <h2 id="input-title" class="sr-only">Entrada Inteligente de Dados</h2>
+            <label for="smart-input">Entrada Inteligente de Dados:</label>
+            <div class="input-wrapper">
+                <input type="text" id="smart-input" placeholder="Ex: Mauricio Spark, 27 anos, Carga: 2 caixas 40kg, Destino: Parintins" aria-describedby="input-help">
+                <button type="button" id="btn-toggle-form" class="btn-toggle-form" title="Usar Formulário (F2)">📝</button>
+            </div>
+            <small id="input-help" class="text-muted">Formato: Nome, Idade, Carga: Descrição Peso, Destino: Local (ou pressione F2 para usar formulário)</small>
+            <button id="btn-processar">Processar e Cadastrar</button>
+        </section>
+
+        <!-- FORMULÁRIO ESTRUTURADO (Colapsável) -->
+        <section class="structured-form" id="structured-form" style="display: none;">
+            <div class="form-header">
+                <h3>📝 Formulário de Embarque Rápido</h3>
+                <button type="button" id="btn-close-form" class="btn-close-form">✕</button>
+            </div>
+            
+            <!-- Seção 1: Dados do Passageiro -->
+            <div class="form-section">
+                <h4>👤 DADOS DO PASSAGEIRO</h4>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="form-nome">Nome:</label>
+                        <input type="text" id="form-nome" placeholder="Digite o nome...">
+                    </div>
+                    <div class="form-group">
+                        <label for="form-idade">Idade:</label>
+                        <input type="text" id="form-idade" placeholder="Idade">
+                    </div>
+                    <div class="form-group">
+                        <label for="form-destino">Destino:</label>
+                        <input type="text" id="form-destino" placeholder="Digite o local...">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Seção 2: Dados da Mercadoria -->
+            <div class="form-section">
+                <h4>📦 DADOS DA MERCADORIA</h4>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="form-carga-desc">Descrição:</label>
+                        <input type="text" id="form-carga-desc" placeholder="Descrição da mercadoria...">
+                    </div>
+                    <div class="form-group">
+                        <label for="form-carga-peso">Peso (kg):</label>
+                        <input type="text" id="form-carga-peso" placeholder="Ex: 50">
+                    </div>
+                    <div class="form-group">
+                        <label for="form-carga-valor">Valor (R$):</label>
+                        <input type="number" id="form-carga-valor" placeholder="0.00" min="0" step="0.01">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="form-carga-resp">Responsável:</label>
+                        <input type="text" id="form-carga-resp" placeholder="Nome do responsável...">
+                    </div>
+                    <div class="form-group">
+                        <label for="form-carga-dest">Destino:</label>
+                        <input type="text" id="form-carga-dest" placeholder="Digite o local...">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Botões de Ação -->
+            <div class="form-actions">
+                <button type="button" id="btn-confirmar-form" class="btn-primary">Confirmar e Salvar</button>
+                <button type="button" id="btn-limpar-form" class="btn-secondary">Limpar</button>
+            </div>
+        </section>
+
+        <!-- MINI-PAINEL DE CONFERÊNCIA (Feedback Visual) -->
+        <section class="feedback-panel" id="feedback-panel" aria-live="polite" style="display: none;">
+            <h3>🔍 Dados Interpretados:</h3>
+            <div class="feedback-content">
+                <div class="feedback-passenger">
+                    <span class="feedback-icon">👤</span>
+                    <span id="feedback-passenger-text">Passageiro: -</span>
+                </div>
+                <div class="feedback-cargo">
+                    <span class="feedback-icon">📦</span>
+                    <span id="feedback-cargo-text">Mercadoria: -</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- LAYOUT EM DUAS COLUNAS -->
+        <div class="two-column-layout" role="main">
+            
+            <!-- COLUNA ESQUERDA: Gestão de Passageiros -->
+            <div class="column-left">
+                <!-- Painel de Métricas de Passageiros -->
+                <section class="card metrics-card" id="metrics-passengers" aria-labelledby="metrics-passengers-title">
+                    <h2 id="metrics-passengers-title">👥 Métricas de Passageiros</h2>
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <span class="metric-label">Total Embarcados:</span>
+                            <span class="metric-value" id="stat-passageiros">0</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Adultos:</span>
+                            <span class="metric-value" id="stat-adultos">0</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Crianças:</span>
+                            <span class="metric-value" id="stat-criancas">0</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Receita Passagens:</span>
+                            <span class="metric-value" id="stat-receita-passagens">R$ 0,00</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Lista de Passageiros -->
+                <section class="card" id="modulo-passageiros" aria-labelledby="modulo-passageiros-title">
+                    <h2 id="modulo-passageiros-title">👥 Lista de Passageiros</h2>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Idade</th>
+                                    <th>Destino</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="lista-passageiros" aria-live="polite"></tbody>
+                        </table>
+                    </div>
+                    <div class="actions">
+                        <button onclick="emitirBilheteConjunto()">Emitir Bilhete (Conjunto)</button>
+                        <button onclick="emitirBilhetePassageiro()">Emitir Apenas Passagem</button>
+                    </div>
+                </section>
+            </div>
+
+            <!-- COLUNA DIREITA: Manifesto de Cargas -->
+            <div class="column-right">
+                <!-- Painel de Métricas de Cargas -->
+                <section class="card metrics-card" id="metrics-cargo" aria-labelledby="metrics-cargo-title">
+                    <h2 id="metrics-cargo-title">📦 Métricas de Cargas</h2>
+                    <div class="metrics-grid">
+                        <div class="metric-item">
+                            <span class="metric-label">Peso Total:</span>
+                            <span class="metric-value" id="stat-carga">0 kg</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Volumes:</span>
+                            <span class="metric-value" id="stat-volumes">0</span>
+                        </div>
+                        <div class="metric-item">
+                            <span class="metric-label">Receita Frete:</span>
+                            <span class="metric-value" id="stat-receita-frete">R$ 0,00</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Manifesto de Cargas -->
+                <section class="card" id="modulo-cargas" aria-labelledby="modulo-cargas-title">
+                    <h2 id="modulo-cargas-title">📦 Manifesto de Cargas</h2>
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Descrição</th>
+                                    <th>Peso (kg)</th>
+                                    <th>Valor (R$)</th>
+                                    <th>Responsável</th>
+                                    <th>Destino</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="lista-cargas" aria-live="polite"></tbody>
+                        </table>
+                    </div>
+                    <div class="actions">
+                        <button onclick="emitirGuiaCarga()">Imprimir Guia de Carga</button>
+                    </div>
+                </section>
+            </div>
+
+        </div>
+
+        <!-- ÁREA CENTRALIZADA DE PRÉ-VISUALIZAÇÃO DO BILHETE -->
+        <section class="ticket-preview-section" id="ticket-preview-section">
+            <div id="preview-passagem" class="ticket-preview" aria-live="polite" role="region" aria-label="Preview do bilhete"></div>
+        </section>
+
+        <!-- SEÇÕES SECUNDÁRIAS (Colapsáveis) -->
+        <div class="secondary-sections">
+            <!-- Configurações (Modal/Colapsável) -->
+            <details class="collapsible-section">
+                <summary>⚙️ Configurações do Barco</summary>
+                <section class="card" id="modulo-configuracoes" aria-labelledby="modulo-configuracoes-title">
+                    <h2 id="modulo-configuracoes-title" class="sr-only">Configurações do Barco</h2>
+                    <div class="form-group">
+                        <label for="conf-preco-adulto">Valor Passagem Adulto (R$):</label>
+                        <input type="number" id="conf-preco-adulto" value="150" min="0" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="conf-preco-crianca">Valor Passagem Criança (R$):</label>
+                        <input type="number" id="conf-preco-crianca" value="75" min="0" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="conf-preco-kg">Preço por KG de Carga (R$):</label>
+                        <input type="number" id="conf-preco-kg" value="2" min="0" step="0.01">
+                    </div>
+                    <button onclick="salvarConfiguracoes()">Salvar Regras</button>
+                </section>
+            </details>
+
+            <!-- Histórico de Viagens (Rodapé) -->
+            <details class="collapsible-section">
+                <summary>📋 Histórico de Viagens Salvas</summary>
+                <section class="card" id="modulo-armazenamento" aria-labelledby="modulo-armazenamento-title">
+                    <h2 id="modulo-armazenamento-title" class="sr-only">Histórico de Viagens Salvas</h2>
+                    <button id="btn-fechar-viagem" class="btn-danger">Encerrar e Salvar Viagem Atual</button>
+                    <div id="historico-viagens" aria-live="polite"></div>
+                </section>
+            </details>
+        </div>
+    </main>
+
+    <script src="javascript/parser.js"></script>
+    <script src="javascript/ticket.js"></script>
+    <script src="javascript/script.js"></script>
+</body>
+</html>
